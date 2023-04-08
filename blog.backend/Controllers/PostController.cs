@@ -18,7 +18,7 @@ namespace blog.backend.Controllers
             _context = context;
         }
 
-        [HttpGet("{list}")]
+        [HttpGet("list")]
         public async Task<ActionResult<List<PostDTO>>> GetAll()
         {
             var posts = await _context.Posts
@@ -29,6 +29,20 @@ namespace blog.backend.Controllers
                 return NotFound();
 
             return posts;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PostDTO>> Get(Guid id)
+        {
+            var post = await _context.Posts
+                            .Include(x => x.Author)
+                            .Where(x => x.Id == id)
+                            .Select(x => new PostDTO(x)).FirstOrDefaultAsync();
+
+            if (post == null)
+                return NotFound();
+
+            return post;
         }
 
     }

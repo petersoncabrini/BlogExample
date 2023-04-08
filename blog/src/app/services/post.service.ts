@@ -11,7 +11,12 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
+  get(id: string) {
+    return this.http.get<Post>(this.apiUrl + id)
+  }
+
   getList() {
     return this.http.get<Post[]>(this.apiUrl + 'list');
   }
+
 }

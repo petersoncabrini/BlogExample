@@ -1,14 +1,13 @@
 <div class="content">
     <div class="cover">
-        <img src="../../../assets/image-placeholder.png" alt="">
+        <img src="{{post.image ? post.image : '../../../assets/image-placeholder.png'}}" alt="">
     </div>
     <div class="title">
-        <h1>Title</h1>
+        <h1>{{post.title}}</h1>
     </div>
     <div class="description">
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nisi ut officia laborum id,veritatis
-            perferendis, quaerat facere numquam eum et ipsa explicabo esse vitae. Voluptatum expedita culpa delectus?
+            {{post.content}}
         </p>
     </div>
     <a routerLink="">
