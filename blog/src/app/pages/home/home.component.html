@@ -6,7 +6,7 @@
                 description="{{mainPost.description}}" id="{{mainPost.id}}"> </app-main-card>
         </div>
         <div class="small">
-            <app-small-card *ngFor="let post of smallPosts"
+            <app-small-card *ngFor="let post of smallPosts | slice:0:3 "
                 cover="{{post.image ? post.image : '../../../assets/image-placeholder.png'}}"
                 createdAt="{{post.createdAt}}" title="{{post.title}}" description="{{post.description}}"
                 id="{{post.id}}"></app-small-card>
