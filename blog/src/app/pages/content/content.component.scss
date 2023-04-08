@@ -1,0 +1,33 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cover {
+
+        margin-top: 20px;
+
+        img {
+            width: 500px;
+            height: 350px;
+        }
+    }
+
+    .title {
+        margin-top: 15px;
+    }
+
+    .description {
+
+        margin-top: 15px;
+
+        p {
+            color: gray;
+        }
+    }
+
+    a {
+        margin-top: 20px;
+        text-decoration: none;
+    }
+}
