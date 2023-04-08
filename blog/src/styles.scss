@@ -1,3 +1,5 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +9,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    background-color: #111111;
+}
+
 header {
     width: 100%;
 }
@@ -14,4 +20,8 @@ header {
 main {
     width: 1200px;
     margin: 0 auto;
+}
+
+a {
+    color: white;
 }
