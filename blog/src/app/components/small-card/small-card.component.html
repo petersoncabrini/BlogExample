@@ -1,4 +1,4 @@
-<div class="small-card">
+<div class="small-card" [style.width]="width">
     <div class="image">
         <img src="{{cover}}" alt="">
     </div>
@@ -7,5 +7,6 @@
         <a routerLink="/content/{{id}}">
             <h1>{{title}}</h1>
         </a>
+        <p>{{description}}</p>
     </div>
 </div>
