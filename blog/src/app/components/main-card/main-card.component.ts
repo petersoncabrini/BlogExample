@@ -9,6 +9,7 @@ export class MainCardComponent {
 
   @Input() cover: string = '';
   @Input() createdAt: string = '';
+  @Input() author: string = '';
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() id: string = '';

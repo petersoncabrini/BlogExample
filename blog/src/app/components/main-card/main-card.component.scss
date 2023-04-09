@@ -17,10 +17,17 @@
         }
     }
 
-    .date {
-        color: gray !important;
-        font-size: 12px;
-        margin-bottom: 15px;
+    .info {
+        font-size: 14px;
+        margin-bottom: 10px;
+
+        .author {
+            font-weight: bold;
+        }
+
+        .date {
+            color: gray !important;
+        }
     }
 
     a {
