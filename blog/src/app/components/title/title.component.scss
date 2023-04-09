@@ -1,6 +1,4 @@
 .title-container {
-    color: white;
-
     h1 {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -9,5 +7,21 @@
         justify-content: center;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 150px;
+        font-weight: bolder;
+
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            background-image:
+                url("../../../assets/title-bg-light-mode.png");
+            background-size: 40% auto;
+            background-position: center;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+    }
+
+    h1.dark-title {
+        background-image: url("../../../assets/title-bg-dark-mode.png") !important;
+        background-size: 40% auto;
     }
 }
