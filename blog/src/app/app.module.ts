@@ -10,6 +10,8 @@ import { MainCardComponent } from './components/main-card/main-card.component';
 import { SmallCardComponent } from './components/small-card/small-card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ContentComponent } from './pages/content/content.component';
+import { ListComponent } from './pages/list/list.component';
+import { DarkModeToggleComponent } from './components/dark-mode-toggle/dark-mode-toggle.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { ContentComponent } from './pages/content/content.component';
     MainCardComponent,
     SmallCardComponent,
     HomeComponent,
-    ContentComponent
+    ContentComponent,
+    ListComponent,
+    DarkModeToggleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

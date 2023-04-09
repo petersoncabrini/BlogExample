@@ -1,4 +1,6 @@
-<header>
-    <app-menu></app-menu>
-</header>
-<router-outlet></router-outlet>
+<body [ngClass]="{'dark-mode': isDarkMode}">
+    <header>
+        <app-menu></app-menu>
+    </header>
+    <router-outlet></router-outlet>
+</body>
