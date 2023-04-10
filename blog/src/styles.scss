@@ -1,16 +1,36 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import './variables.scss';
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #111111;
-    color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+// General
+
 body {
-    background-color: #111111;
+    background-image: url("./assets/bg-light-mode.png");
+    background-size: contain;
+    background-repeat: round;
+    background-color: #e2e2e2;
+    color: #111111;
+    height: 100vh;
+
+    a {
+        text-decoration: none;
+        color: #111111;
+        cursor: pointer;
+    }
+}
+
+body.dark-mode {
+    a {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+    }
 }
 
 header {
@@ -22,6 +42,42 @@ main {
     margin: 0 auto;
 }
 
-a {
-    color: white;
+// Buttons
+
+.button-default {
+    width: 80px;
+    height: 35px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    -webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.25);
+}
+
+.button-primary {
+    background-color: $primary-color;
+}
+
+.button-secondary {
+    background-color: $secondary-color;
+}
+
+button:disabled {
+    background-color: rgb(205, 205, 205);
+}
+
+// Inputs
+
+input {
+    border: 2px solid #00ff9f;
+    border-radius: 5px;
+    width: 300px;
+    height: 35px;
+    margin: 10px;
+}
+
+input:focus-visible {
+    border: 2px solid #ae4bff !important;
+    outline: #ae4bff;
 }
