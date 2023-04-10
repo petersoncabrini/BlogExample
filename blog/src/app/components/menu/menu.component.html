@@ -1,9 +1,37 @@
-<div class="menu d-flex justify-content-center align-items-center">
-    <ul class="options-list m-0">
-        <li> <a href="">Option 1</a> </li>
-        <li>•</li>
-        <li> <a href="">Option 2</a> </li>
-        <li>•</li>
-        <li> <a href="">Option 3</a> </li>
-    </ul>
+<div class="menu d-flex justify-content-between align-items-center px-5">
+    <div class="logo-container">
+        <a routerLink="/"><img class="logo" src="./../../../assets/bubble-logo.png" alt="">
+        </a>
+    </div>
+    <div class="options-container">
+        <ul class="options-list m-0 p-0">
+            <li> <a href=""><i class="bi bi-graph-up-arrow mx-1"></i>Trending Posts</a> </li>
+            <li>•</li>
+            <li> <a routerLink="write"><i class="bi bi-pencil-square mx-1"></i>Write</a></li>
+            <li>•</li>
+            <li> <a href=""><i class="bi bi-search mx-1"></i>Search</a> </li>
+        </ul>
+    </div>
+    <div class="button-container d-flex justify-content-center align-items-center">
+        <button *ngIf="!authorService.isAuthenticated" class="button-default button-primary mx-2"
+            routerLink="/login">Login</button>
+        <button *ngIf="!authorService.isAuthenticated" class="button-default button-secondary mx-2"
+            routerLink="/register">Register</button>
+
+        <div class="dropdown" *ngIf="authorService.isAuthenticated">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="userMenuLink" data-bs-toggle="dropdown"
+                aria-haspopup=" true" aria-expanded="false">
+                <img src="../../../assets/image-placeholder.png" alt="Imagem do usuário" class="rounded-circle mr-2"
+                    width="30px" height="30px">
+                {{authorService.userName}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenuLink">
+                <a class="dropdown-item" href="#"><i class="bi bi-sliders2 mx-2"></i>Settings</a>
+                <a class="dropdown-item" (click)="logout()"><i class="bi bi-box-arrow-left mx-2"></i>Logout</a>
+            </div>
+        </div>
+
+        <app-dark-mode-toggle></app-dark-mode-toggle>
+    </div>
+
 </div>

@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
 
   getPosts() {
     this.postService.getList().subscribe(r => {
-      console.log(r)
       this.mainPost = r.shift();
       this.smallPosts = r;
     })

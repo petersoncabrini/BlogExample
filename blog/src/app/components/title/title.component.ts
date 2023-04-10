@@ -20,7 +20,6 @@ export class TitleComponent implements OnInit {
   watchDarkModeEvent() {
     this.localStorage.watch('isDarkMode', { type: 'boolean' }).subscribe(r => {
       this.isDarkMode = r;
-      console.log(this.isDarkMode + "title")
     })
   }
 }
