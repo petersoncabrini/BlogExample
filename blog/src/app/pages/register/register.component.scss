@@ -1,0 +1,38 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px);
+
+    label {
+        width: 70px;
+    }
+
+    input {
+        border: 2px solid #ae4bff;
+        border-radius: 5px;
+        width: 300px;
+        height: 35px;
+        margin: 10px;
+    }
+
+    input.password {
+        width: 150px;
+    }
+
+    input:focus-visible {
+        border: 2px solid #00ff9f !important;
+        outline: #00ff9f;
+    }
+
+    .form-error {
+        font-size: 12px;
+        color: red;
+    }
+
+    .button-default {
+        margin-top: 20px;
+    }
+
+}

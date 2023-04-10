@@ -12,6 +12,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContentComponent } from './pages/content/content.component';
 import { ListComponent } from './pages/list/list.component';
 import { DarkModeToggleComponent } from './components/dark-mode-toggle/dark-mode-toggle.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WriteComponent } from './pages/write/write.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +27,17 @@ import { DarkModeToggleComponent } from './components/dark-mode-toggle/dark-mode
     HomeComponent,
     ContentComponent,
     ListComponent,
-    DarkModeToggleComponent
+    DarkModeToggleComponent,
+    LoginComponent,
+    RegisterComponent,
+    WriteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
