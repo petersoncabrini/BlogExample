@@ -39,4 +39,8 @@ export class AuthorService {
     return name;
   }
 
+  get userId() {
+    return this.storage.getItem('authorId')
+  }
+
 }
