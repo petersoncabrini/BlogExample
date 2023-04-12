@@ -19,4 +19,8 @@ export class PostService {
     return this.http.get<Post[]>(this.apiUrl + 'list');
   }
 
+  save(request: Post) {
+    return this.http.post<Post>(this.apiUrl + 'save', request);
+  }
+
 }

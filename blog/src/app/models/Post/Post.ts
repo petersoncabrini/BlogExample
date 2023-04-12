@@ -7,6 +7,7 @@ export class Post {
     public description: string
     public content: string;
     public authorName: string;
-    public createdAt: Date;
+    public authorId: string;
+    public createdAt: string;
     public category: PostCategory
 }

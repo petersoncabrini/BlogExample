@@ -1,0 +1,41 @@
+input,
+textarea {
+    padding: 5px;
+    border: 1px solid #00ff9f;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.image-input {
+    display: flex;
+    padding: 3px !important;
+    border: none;
+    width: auto;
+    background-color: #ae4bff;
+}
+
+textarea {
+    resize: none;
+}
+
+textarea:focus-visible {
+    border: 2px solid #ae4bff !important;
+    outline: #ae4bff;
+}
+
+select {
+    padding: 5px;
+    border: 1px solid #00ff9f;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    height: 35px;
+}
+
+select:focus-visible {
+    border: 2px solid #ae4bff !important;
+    outline: #ae4bff;
+}
+
+.img-thumbnail {
+    max-height: 480px;
+}

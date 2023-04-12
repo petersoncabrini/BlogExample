@@ -45,6 +45,25 @@ namespace blog.backend.Controllers
             return post;
         }
 
+        [HttpPost("save")]
+        public async Task<ActionResult> Save(PostRequestDTO request)
+        {
+            var post = new Post();
+            post.Id = request.Id;
+            post.Image = request.Image;
+            post.AuthorId = request.AuthorId;
+            post.Title = request.Title;
+            post.Description = request.Description;
+            post.Content = request.Content;
+            post.CreatedAt = DateTime.Now;
+            post.Category = request.Category;
+
+            _context.Posts.Add(post);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
     }
 
 }
