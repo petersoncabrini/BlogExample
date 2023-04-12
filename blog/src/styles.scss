@@ -23,12 +23,24 @@ body {
         color: #111111;
         cursor: pointer;
     }
+
+    a:hover {
+        text-decoration: none;
+        color: $secondary-color !important;
+        cursor: pointer;
+    }
 }
 
 body.dark-mode {
     a {
         text-decoration: none;
         color: white;
+        cursor: pointer;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: $primary-color !important;
         cursor: pointer;
     }
 }
