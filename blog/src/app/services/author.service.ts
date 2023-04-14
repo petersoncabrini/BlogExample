@@ -10,9 +10,8 @@ import { AuthorLoginResponse } from '../models/Author/AuthorLoginResponse';
 export class AuthorService {
 
   private apiUrl = 'http://localhost:5248/api/author/';
-  public storage;
 
-  constructor(private http: HttpClient) { this.storage = localStorage }
+  constructor(private http: HttpClient) { }
 
   login(request: AuthorLogin) {
     return this.http.post<AuthorLoginResponse>(this.apiUrl + "login", request)
@@ -20,27 +19,6 @@ export class AuthorService {
 
   register(request: AuthorRegister) {
     return this.http.post<any>(this.apiUrl + 'register', request);
-  }
-
-  logout() {
-    this.storage.clear();
-  }
-
-  get isAuthenticated(): boolean {
-    const token = this.storage.getItem('token');
-    if (token)
-      return true;
-    else
-      return false;
-  }
-
-  get userName() {
-    const name = this.storage.getItem('name');
-    return name;
-  }
-
-  get userId() {
-    return this.storage.getItem('authorId')
   }
 
 }

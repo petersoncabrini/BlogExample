@@ -1,38 +1,38 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { AuthorService } from 'src/app/services/author.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss', './menu.responsive.component.scss']
 })
 export class MenuComponent implements OnInit {
 
   isAuthenticated: boolean = false;
   userName: string = '';
+  showSearch = false;
+  innerWidth: any;
 
-  constructor(public authorService: AuthorService,
-    private router: Router) {
-
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.checkUser();
-    this.getUser();
+
   }
 
-  checkUser() {
-    this.isAuthenticated = this.authorService.isAuthenticated;
-  }
-
-  getUser() {
-    this.userName = this.authorService.userName;
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.innerWidth = window.innerWidth;
   }
 
   logout() {
-    this.authorService.logout();
-    this.router.navigate(['/']);
+    this.authService.logout();
+  }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
   }
 
 }

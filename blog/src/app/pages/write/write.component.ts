@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostCategory, PostCategoryLabelMapping } from 'src/app/enums/PostCategory';
 import { Post } from 'src/app/models/Post/Post';
+import { AuthService } from 'src/app/services/auth.service';
 import { AuthorService } from 'src/app/services/author.service';
 import { PostService } from 'src/app/services/post.service';
 
@@ -27,7 +28,7 @@ export class WriteComponent {
   categoryLabelMapping = PostCategoryLabelMapping;
 
   constructor(private postService: PostService,
-    private authorService: AuthorService,
+    private authService: AuthService,
     private router: Router) {
   }
 
@@ -38,12 +39,10 @@ export class WriteComponent {
     request.description = this.post.description;
     request.content = this.post.content;
     request.category = +this.post.category;
-    request.authorName = this.authorService.userName;
-    request.authorId = this.authorService.userId;
+    request.authorName = this.authService.userName;
+    request.authorId = this.authService.userId;
     request.image = this.fileBase64;
     request.createdAt = Date.now.toString()
-
-    console.log(request)
 
     this.postService.save(request).subscribe(r => {
       this.router.navigate(['/']);
