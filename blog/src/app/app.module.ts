@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WriteComponent } from './pages/write/write.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { TokenInterceptor } from './interceptors/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { WriteComponent } from './pages/write/write.component';
     DarkModeToggleComponent,
     LoginComponent,
     RegisterComponent,
-    WriteComponent
+    WriteComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,13 @@ import { WriteComponent } from './pages/write/write.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthorLogin } from '../models/Author/AuthorLogin';
@@ -14,6 +15,7 @@ export class AuthService {
     _authorId: string = '';
     _userName: string = '';
     _isAuthenticated: boolean = false;
+    _token: string = 'blog-example-token';
 
     constructor(private router: Router,
         private authorService: AuthorService) {
@@ -26,15 +28,15 @@ export class AuthService {
         }).join(''));
     }
 
-    // getHeaders(): HttpHeaders {
-    //     let headers = new HttpHeaders();
-    //     headers = headers.set("Content-Type", 'application/json; charset=utf-8');
+    getHeaders(): HttpHeaders {
+        let headers = new HttpHeaders();
+        headers = headers.set("Content-Type", 'application/json; charset=utf-8');
 
-    //     if (this.isAuthenticated) {
-    //         headers = headers.set("Authorization", "Bearer " + this.token);
-    //     }
-    //     return headers;
-    // }
+        if (this.isAuthenticated) {
+            headers = headers.set("Authorization", "Bearer " + this.token);
+        }
+        return headers;
+    }
 
     login(authRequest: AuthorLogin) {
         this.authorService.login(authRequest).subscribe((res) => {
@@ -43,10 +45,10 @@ export class AuthService {
                 this._isAuthenticated = true;
                 this._userName = res.name;
                 this._authorId = res.id;
+                this._token = res.token;
             }
-
-
             this.router.navigate(['/']);
+            console.log(this.storage)
         })
     }
 
@@ -63,6 +65,7 @@ export class AuthService {
         this._userName = '';
         this._isAuthenticated = false;
         this.router.navigate(['/']);
+        console.log(this.storage)
     }
 
     get isAuthenticated(): boolean {
@@ -75,5 +78,9 @@ export class AuthService {
 
     get userId() {
         return this._authorId;
+    }
+
+    get token() {
+        return this._token;
     }
 }
