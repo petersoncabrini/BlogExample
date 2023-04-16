@@ -1,0 +1,14 @@
+<div class="posted-comments col-lg-6" *ngFor="let comment of comments">
+    <div class="comment-info d-flex align-items-center mt-3">
+        <span class="me-3">{{comment.authorName}}</span>
+        <span class="created-at">{{comment.createdAt}}</span>
+    </div>
+    <div class="comment-content">
+        <p>{{comment.content}}</p>
+    </div>
+</div>
+<div class="write-comment d-flex align-items-end mt-3 mb-3" *ngIf="authService.isAuthenticated">
+    <textarea placeholder="leave a comment" class="text-comment col-lg-6 p-1" style="resize: none;"
+        [(ngModel)]="commentContent"></textarea>
+    <button class="button-default button-primary mx-3" (click)="saveComment()">Done</button>
+</div>
