@@ -1,19 +1,8 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    .articles {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-
-        .small {
-            width: -webkit-fill-available;
-            align-items: flex-start !important;
-        }
+    h1 {
+        font-size: 75px !important;
     }
-
-
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

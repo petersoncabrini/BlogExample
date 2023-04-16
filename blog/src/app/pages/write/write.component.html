@@ -18,7 +18,7 @@
                     class="form-control"></textarea>
             </div>
 
-            <button class="button-default button-secondary" type="submit"
+            <button class="button-default button-secondary mb-3" type="submit"
                 [disabled]="post.title == '' || post.description == '' || post.content == '' || post.category == 0">Publicar</button>
         </form>
     </div>
@@ -32,7 +32,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="post-image">Imagem:</label>
+            <label for=" post-image">Imagem:</label>
             <input class="m-0 image-input" type="file" id="post-image" name="post-image"
                 (change)="onFileSelected($event)" accept=".jpg,.png">
             <img *ngIf="imageUrl" [src]="imageUrl" alt="Imagem do post" class="img-thumbnail mt-2">

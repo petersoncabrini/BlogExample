@@ -1,6 +1,6 @@
 <main>
     <app-title></app-title>
-    <div class="articles">
+    <div class="articles container col-lg-10 col-md-8">
         <div class="main" *ngIf="hasPosts">
             <app-main-card cover="{{mainPost.image}}" createdAt="{{mainPost.createdAt}}"
                 author="{{mainPost.authorName}}" title="{{mainPost.title}}" description="{{mainPost.description}}"
@@ -10,7 +10,7 @@
             <app-small-card *ngFor="let post of smallPosts | slice:0:3 "
                 cover="{{post.image ? post.image : '../../../assets/image-placeholder.png'}}"
                 createdAt="{{post.createdAt}}" title="{{post.title}}" description="{{post.description}}"
-                id="{{post.id}}" width="600px"></app-small-card>
+                id="{{post.id}}"></app-small-card>
             <a *ngIf="seeMore" routerLink="/list">See more <i class="bi bi-plus-square mx-1"></i></a>
         </div>
     </div>

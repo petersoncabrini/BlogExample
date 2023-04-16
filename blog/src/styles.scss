@@ -9,14 +9,15 @@
 }
 
 // General
+html {
+    background-image: url("./assets/bg-light-mode.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
 body {
-    background-image: url("./assets/bg-light-mode.png");
-    background-size: contain;
-    background-repeat: round;
-    background-color: #e2e2e2;
-    color: #111111;
-    height: 100vh;
+    background-color: transparent !important;
 
     a {
         text-decoration: none;
@@ -29,29 +30,6 @@ body {
         color: $secondary-color !important;
         cursor: pointer;
     }
-}
-
-body.dark-mode {
-    a {
-        text-decoration: none;
-        color: white;
-        cursor: pointer;
-    }
-
-    a:hover {
-        text-decoration: none;
-        color: $primary-color !important;
-        cursor: pointer;
-    }
-}
-
-header {
-    width: 100%;
-}
-
-main {
-    width: 1200px;
-    margin: 0 auto;
 }
 
 // Buttons
@@ -87,9 +65,18 @@ input {
     width: 300px;
     height: 35px;
     margin: 10px;
+    padding: 5px;
 }
 
 input:focus-visible {
     border: 2px solid #ae4bff !important;
-    outline: #ae4bff;
+    box-shadow: none !important;
+}
+
+input:focus {
+    border: 2px solid #ae4bff !important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
 }

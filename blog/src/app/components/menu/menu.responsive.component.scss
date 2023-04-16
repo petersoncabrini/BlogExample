@@ -1,19 +1,29 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    .articles {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    .menu {
 
+        font-size: 20px;
 
-        .small {
-            width: -webkit-fill-available;
-            align-items: flex-start !important;
+        .logo {
+            width: 35px !important;
+            height: 35px !important;
+        }
+
+        .rounded-circle {
+            width: 25px;
+            height: 25px;
+        }
+
+        li {
+            margin: 5px !important;
+        }
+
+        button {
+            font-size: 12px;
+            width: 55px !important;
+            height: 30px !important;
         }
     }
-
-
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

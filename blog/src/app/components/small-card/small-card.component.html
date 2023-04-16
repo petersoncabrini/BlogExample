@@ -1,12 +1,12 @@
-<div class="small-card" [style.width]="width">
+<div class="small-card d-flex">
     <div class="image">
-        <img src="{{cover}}" alt="">
+        <img src="data:image/png;base64, {{cover}}" alt="">
     </div>
-    <div class="content">
+    <div class="content d-flex flex-column justify-content-center">
         <span>{{createdAt}}</span>
         <a routerLink="/content/{{id}}">
             <h1>{{title}}</h1>
         </a>
-        <p>{{description}}</p>
+        <p class="mb-1">{{description}}</p>
     </div>
 </div>

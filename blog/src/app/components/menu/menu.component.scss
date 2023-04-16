@@ -1,9 +1,7 @@
 .menu {
     height: 60px;
-    width: 100%;
 
     .logo-container {
-        width: 300px;
 
         .logo {
             width: 50px;
@@ -11,7 +9,6 @@
         }
 
     }
-
 
     .options-container {
 
@@ -35,12 +32,10 @@
                     color: cornflowerblue;
                 }
             }
+
+            input {
+                max-width: 250px;
+            }
         }
     }
-
-    .button-container {
-        width: 300px;
-    }
-
-
 }

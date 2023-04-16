@@ -1,16 +1,21 @@
-<div class="content">
-    <div class="cover">
-        <img src="{{post.image ? post.image : '../../../assets/image-placeholder.png'}}" alt="">
+<div class="content d-flex justify-content-center align-itens-center mt-3">
+    <div class="col-lg-10">
+        <div class="cover d-flex justify-content-center">
+            <img src="data:image/png;base64, {{post.image ? post.image : '../../../assets/image-placeholder.png'}}"
+                alt="">
+        </div>
+        <div class="title d-flex justify-content-center">
+            <h1>{{post.title}}</h1>
+        </div>
+        <div class="post-content">
+            <p>
+                {{post.content}}
+            </p>
+        </div>
+        <app-comment></app-comment>
+        <a routerLink="">
+            <i class="bi bi-arrow-left-square mx-1"></i>Back
+        </a>
     </div>
-    <div class="title">
-        <h1>{{post.title}}</h1>
-    </div>
-    <div class="description">
-        <p>
-            {{post.content}}
-        </p>
-    </div>
-    <a routerLink="">
-        <i class="bi bi-arrow-left-square mx-1"></i>Back
-    </a>
+
 </div>
