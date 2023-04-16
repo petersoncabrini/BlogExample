@@ -4,6 +4,7 @@ using System.Text;
 using blog.backend.Context;
 using blog.backend.DTOs.Author;
 using blog.backend.models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -23,6 +24,7 @@ namespace blog.backend.Controllers
             _config = config;
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult> Register(AuthorRegisterDTO request)
         {
@@ -59,6 +61,7 @@ namespace blog.backend.Controllers
                 return BadRequest(ModelState);
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(AuthorLoginDTO request)
         {
@@ -78,6 +81,8 @@ namespace blog.backend.Controllers
                     new Claim(ClaimTypes.Name, author.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
+                Issuer = _config["Jwt:Issuer"],
+                Audience = _config["Jwt:Audience"],
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

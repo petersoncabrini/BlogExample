@@ -1,6 +1,7 @@
 using blog.backend.Context;
 using blog.backend.DTOs.Post;
 using blog.backend.models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,7 @@ namespace blog.backend.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet("list")]
         public async Task<ActionResult<List<PostDTO>>> GetAll()
         {
@@ -31,6 +33,7 @@ namespace blog.backend.Controllers
             return posts;
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<PostDTO>> Get(Guid id)
         {
@@ -45,6 +48,7 @@ namespace blog.backend.Controllers
             return post;
         }
 
+        [Authorize]
         [HttpPost("save")]
         public async Task<ActionResult> Save(PostRequestDTO request)
         {
