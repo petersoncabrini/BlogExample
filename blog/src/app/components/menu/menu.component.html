@@ -5,7 +5,7 @@
     </div>
     <div class="options-container">
         <ul class="options-list m-0 p-0">
-            <li *ngIf="!showSearch"> <a href=""><i class="bi bi-graph-up-arrow mx-1"></i> <span
+            <li *ngIf="!showSearch"> <a routerLink="/list"><i class="bi bi-graph-up-arrow mx-1"></i> <span
                         *ngIf="innerWidth > 600">Trending</span></a> </li>
             <li *ngIf="!showSearch"> <a routerLink="write"><i class="bi bi-pencil-square mx-1"></i> <span
                         *ngIf="innerWidth > 600">Write</span> </a></li>
