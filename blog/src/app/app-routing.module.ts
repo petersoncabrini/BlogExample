@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: "content/:id", component: ContentComponent },
   { path: "list", component: ListComponent },
   { path: "write", component: WriteComponent, canActivate: [AuthGuard] },
+  { path: "edit/:id", component: WriteComponent, canActivate: [AuthGuard] },
   { path: "my-posts", component: MyPostsComponent, canActivate: [AuthGuard] },
 ];
 

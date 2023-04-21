@@ -69,6 +69,34 @@ namespace blog.backend.Controllers
         }
 
         [Authorize]
+        [HttpPut("edit")]
+        public async Task<ActionResult> Edit(PostRequestDTO request)
+        {
+            var post = await _context.Posts.FindAsync(request.Id);
+
+            if (post != null)
+            {
+                post.Id = request.Id;
+                post.Image = request.Image;
+                post.AuthorId = request.AuthorId;
+                post.Title = request.Title;
+                post.Description = request.Description;
+                post.Content = request.Content;
+                post.CreatedAt = post.CreatedAt;
+                post.Category = request.Category;
+
+                _context.Posts.Update(post);
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [Authorize]
         [HttpDelete("delete/{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {

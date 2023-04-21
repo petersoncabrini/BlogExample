@@ -20,7 +20,11 @@ export class PostService {
   }
 
   save(request: Post) {
-    return this.http.post<Post>(this.apiUrl + 'save', request);
+    return this.http.post<any>(this.apiUrl + 'save', request);
+  }
+
+  edit(request: Post) {
+    return this.http.put<any>(this.apiUrl + 'edit', request);
   }
 
   delete(id: string) {

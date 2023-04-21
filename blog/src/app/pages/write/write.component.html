@@ -1,7 +1,7 @@
 <div class="row justify-content-center mt-5">
-    <h1 class="page-title mt-3">Write</h1>
+    <h1 class="page-title mt-3">{{isEdit ? "Edit" : "Write"}}</h1>
     <div class="col-md-6">
-        <form (ngSubmit)="onSubmit()">
+        <form>
             <div class="form-group">
                 <label for="post-title">Title:</label>
                 <input type="text" id="post-title" name="post-title" [(ngModel)]="post.title" class="form-control m-0">
@@ -18,8 +18,16 @@
                     class="form-control"></textarea>
             </div>
 
-            <button class="button-default button-secondary mb-3" type="submit"
-                [disabled]="post.title == '' || post.description == '' || post.content == '' || post.category == 0">Publicar</button>
+            <button class="button-default button-primary mb-3" type="submit" *ngIf="!isEdit"
+                [disabled]="post.title == '' || post.description == '' || post.content == '' || post.category == 0"
+                (click)="publish()">Publicar</button>
+
+            <button class="button-default button-primary mb-3" type="submit" *ngIf="isEdit"
+                [disabled]="post.title == '' || post.description == '' || post.content == '' || post.category == 0"
+                (click)="edit()">Editar</button>
+
+            <button type="button" class="button-default button-secondary mx-3"
+                (click)="onCancelButtonClick()">Cancel</button>
         </form>
     </div>
     <div class="col-md-4">
@@ -35,7 +43,10 @@
             <label for=" post-image">Imagem:</label>
             <input class="m-0 image-input" type="file" id="post-image" name="post-image"
                 (change)="onFileSelected($event)" accept=".jpg,.png">
-            <img *ngIf="imageUrl" [src]="imageUrl" alt="Imagem do post" class="img-thumbnail mt-2">
+            <img *ngIf="imageUrl && !isEdit" [src]="imageUrl" alt="Imagem do post" class="img-thumbnail mt-2">
+            <img *ngIf="isEdit"
+                src="{{fileBase64 == null ? '../../../assets/image-placeholder.png' : 'data:image/png;base64, ' + fileBase64}}"
+                alt="" class="img-thumbnail mt-2">
         </div>
     </div>
 </div>
