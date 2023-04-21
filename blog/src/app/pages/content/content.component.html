@@ -1,7 +1,7 @@
 <div class="content d-flex justify-content-center align-itens-center mt-3">
     <div class="col-lg-10">
         <div class="cover d-flex justify-content-center">
-            <img src="data:image/png;base64, {{post.image ? post.image : '../../../assets/image-placeholder.png'}}"
+            <img src="{{post.image == null ? '../../../assets/image-placeholder.png' : 'data:image/png;base64, ' + post.image}}"
                 alt="">
         </div>
         <div class="title d-flex justify-content-center">
@@ -13,9 +13,8 @@
             </p>
         </div>
         <app-comment></app-comment>
-        <a routerLink="">
+        <a (click)="onBackButtonClick()">
             <i class="bi bi-arrow-left-square mx-1"></i>Back
         </a>
     </div>
-
 </div>

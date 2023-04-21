@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/models/Post/Post';
@@ -15,7 +16,8 @@ export class ContentComponent implements OnInit {
   post: Post;
 
   constructor(private postService: PostService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private location: Location) {
   }
 
   ngOnInit(): void {
@@ -30,4 +32,9 @@ export class ContentComponent implements OnInit {
       this.post = r;
     })
   }
+
+  onBackButtonClick() {
+    this.location.back();
+  }
+
 }
