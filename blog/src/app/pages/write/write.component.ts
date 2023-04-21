@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { PostCategory, PostCategoryLabelMapping } from 'src/app/enums/PostCategory';
 import { Post } from 'src/app/models/Post/Post';
 import { AuthService } from 'src/app/services/auth.service';
-import { AuthorService } from 'src/app/services/author.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -44,10 +43,13 @@ export class WriteComponent {
     request.image = this.fileBase64;
     request.createdAt = Date.now.toString()
 
-    this.postService.save(request).subscribe(r => {
-      this.router.navigate(['/']);
-    })
-
+    this.postService.save(request).subscribe({
+      next: (res) => {
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+      }
+    });
   }
 
   getKeys() {

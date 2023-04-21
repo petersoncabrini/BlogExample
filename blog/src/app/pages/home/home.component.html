@@ -7,8 +7,9 @@
                 id="{{mainPost.id}}"> </app-main-card>
         </div>
         <div class="small" *ngIf="hasPosts">
+            <h1 class="page-title mt-1">Latest Posts</h1>
             <app-small-card *ngFor="let post of smallPosts | slice:0:3 "
-                cover="{{post.image ? post.image : '../../../assets/image-placeholder.png'}}"
+                cover="{{post.image == null ? '../../../assets/image-placeholder.png' : 'data:image/png;base64, ' + post.image}}"
                 createdAt="{{post.createdAt}}" title="{{post.title}}" description="{{post.description}}"
                 id="{{post.id}}"></app-small-card>
             <a *ngIf="seeMore" routerLink="/list">See more <i class="bi bi-plus-square mx-1"></i></a>

@@ -1,4 +1,5 @@
 <div class="row justify-content-center mt-5">
+    <h1 class="page-title mt-3">Write</h1>
     <div class="col-md-6">
         <form (ngSubmit)="onSubmit()">
             <div class="form-group">
@@ -11,7 +12,6 @@
                 <textarea id="post-description" name="post-description" [(ngModel)]="post.description"
                     class="form-control"></textarea>
             </div>
-
             <div class="form-group">
                 <label for="post-content">Content:</label>
                 <textarea id="post-content" name="post-content" rows="15" [(ngModel)]="post.content"

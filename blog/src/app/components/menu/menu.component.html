@@ -27,10 +27,10 @@
                 aria-haspopup=" true" aria-expanded="false">
                 <img src="../../../assets/image-placeholder.png" alt="Imagem do usuário" class="rounded-circle mr-2"
                     width="30px" height="30px">
-                <span class="mx-1" *ngIf="innerWidth > 600">{{authService.userName}}</span>
+                <span class="mx-1">{{authService.userName}}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenuLink">
-                <a class="dropdown-item" href="#"><i class="bi bi-sliders2 me-2"></i>Settings</a>
+                <a class="dropdown-item" routerLink="/my-posts"><i class="bi bi-card-heading me-2"></i>My Posts</a>
                 <a class="dropdown-item" (click)="logout()"><i class="bi bi-box-arrow-left me-2"></i>Logout</a>
             </div>
         </div>

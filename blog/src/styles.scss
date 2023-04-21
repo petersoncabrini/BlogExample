@@ -80,3 +80,21 @@ input:focus {
 .form-control:focus {
     box-shadow: none !important;
 }
+
+.page-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 36px;
+    font-weight: bolder;
+
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+        background-image:
+            url("./assets/title-bg-light-mode.png");
+        background-size: 100px auto;
+        background-position: center;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

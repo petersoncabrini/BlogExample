@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
   innerWidth: any;
 
   constructor(public authService: AuthService) {
+    this.innerWidth = window.innerWidth;
   }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class MenuComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.innerWidth = window.innerWidth;
+    console.log(this.innerWidth);
   }
 
   logout() {

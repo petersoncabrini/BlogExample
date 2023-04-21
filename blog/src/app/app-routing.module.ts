@@ -5,6 +5,7 @@ import { ContentComponent } from './pages/content/content.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListComponent } from './pages/list/list.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MyPostsComponent } from './pages/my-posts/my-posts.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { WriteComponent } from './pages/write/write.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "content/:id", component: ContentComponent },
   { path: "list", component: ListComponent },
   { path: "write", component: WriteComponent, canActivate: [AuthGuard] },
+  { path: "my-posts", component: MyPostsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
