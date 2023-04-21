@@ -23,4 +23,9 @@ export class PostService {
     return this.http.post<Post>(this.apiUrl + 'save', request);
   }
 
+  delete(id: string) {
+    return this.http.delete<any>(this.apiUrl + 'delete/' + id);
+
+  }
+
 }

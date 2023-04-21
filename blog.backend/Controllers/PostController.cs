@@ -68,6 +68,21 @@ namespace blog.backend.Controllers
             return Ok();
         }
 
+        [Authorize]
+        [HttpDelete("delete/{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var dbPost = await _context.Posts.FindAsync(id);
+            if (dbPost == null)
+                return NotFound();
+
+            _context.Posts.Remove(dbPost);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+
     }
 
 }
