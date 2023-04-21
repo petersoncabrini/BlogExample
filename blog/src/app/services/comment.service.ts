@@ -23,4 +23,8 @@ export class CommentService {
     return this.http.post<any>(this.apiUrl + 'save', request);
   }
 
+  delete(id: string) {
+    return this.http.delete<any>(this.apiUrl + 'delete/' + id);
+  }
+
 }

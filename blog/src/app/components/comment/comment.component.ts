@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from 'src/app/models/Comment/Comment';
 import { CommentResponse } from 'src/app/models/Comment/CommentResponse';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommentService } from 'src/app/services/comment.service';
 
@@ -18,7 +19,8 @@ export class CommentComponent implements OnInit {
 
   constructor(private commentService: CommentService,
     private activatedRoute: ActivatedRoute,
-    public authService: AuthService) {
+    public authService: AuthService,
+    private alertService: AlertService) {
 
   }
 
@@ -40,9 +42,27 @@ export class CommentComponent implements OnInit {
     request.postId = this.postId;
     request.content = this.commentContent;
 
-    this.commentService.save(request).subscribe(r => {
-      this.getComments();
+    this.commentService.save(request).subscribe({
+      next: (res) => {
+        this.alertService.openSnackBar('Comment added successfully', 'Ok');
+        this.commentContent = '';
+        this.getComments();
+      },
+      error: (err) => {
+      }
     })
+  }
+
+  deleteComment(commentId: string) {
+    debugger
+    this.alertService.openDialog('Are you sure you want to delete this comment?').afterClosed().subscribe((res: boolean) => {
+      if (res)
+        this.commentService.delete(commentId).subscribe(r => {
+          this.alertService.openSnackBar('Comment deleted successfully', 'Ok');
+          this.getComments();
+        })
+    });
+
 
   }
 

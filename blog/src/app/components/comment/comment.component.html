@@ -2,6 +2,8 @@
     <div class="comment-info d-flex align-items-center mt-3">
         <span class="me-3">{{comment.authorName}}</span>
         <span class="created-at">{{comment.createdAt}}</span>
+        <a class="mx-3" (click)="deleteComment(comment.id)" *ngIf="comment.authorName == authService._userName"><i
+                class="bi bi-trash"></i></a>
     </div>
     <div class="comment-content">
         <p>{{comment.content}}</p>
