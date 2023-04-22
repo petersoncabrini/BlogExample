@@ -15,7 +15,7 @@ export class AuthService {
     _authorId: string = '';
     _userName: string = '';
     _isAuthenticated: boolean = false;
-    _token: string = 'blog-example-token';
+    _token: string;
 
     constructor(private router: Router,
         private authorService: AuthorService) {

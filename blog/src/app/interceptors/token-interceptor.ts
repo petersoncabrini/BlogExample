@@ -29,31 +29,3 @@ export class TokenInterceptor implements HttpInterceptor {
         );
     }
 }
-
-
-// import { Injectable } from '@angular/core';
-// import { HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
-// import { AuthService } from '../services/auth.service';
-// import { catchError, throwError } from 'rxjs';
-
-// @Injectable()
-// export class TokenInterceptor implements HttpInterceptor {
-
-//     constructor(private authService: AuthService) { }
-
-//     intercept(request: HttpRequest<any>, next: HttpHandler): any {
-//         return next.handle(this.addTokenToRequest(request))
-//             .pipe(
-//                 catchError(error => {
-//                     if (error instanceof HttpErrorResponse && error.status === 401)
-//                         this.authService.logout();
-
-//                     return throwError(() => error);
-//                 })
-//             );
-//     }
-
-//     private addTokenToRequest(request: HttpRequest<any>): HttpRequest<any> {
-//         return request.clone({ headers: this.authService.getHeaders() });
-//     }
-// }

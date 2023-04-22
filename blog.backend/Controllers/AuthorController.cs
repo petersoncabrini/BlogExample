@@ -30,14 +30,11 @@ namespace blog.backend.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Verifica se o email já está sendo utilizado
                 var authorExists = await _context.Authors.FirstOrDefaultAsync(u => u.Email == request.Email);
 
                 if (authorExists != null)
                     return BadRequest("Este email já está sendo utilizado por outro autor");
 
-
-                // Cria um novo autor
                 var author = new Author
                 {
                     Id = Guid.NewGuid(),
@@ -46,12 +43,10 @@ namespace blog.backend.Controllers
                     IsActive = true
                 };
 
-                // Gera uma hash da senha usando BCrypt
                 string hashedPassword = HashPassword(request.Password);
 
                 author.Password = hashedPassword;
 
-                // Adiciona o autor ao contexto do EF Core e salva no banco de dados
                 _context.Authors.Add(author);
                 await _context.SaveChangesAsync();
 
@@ -65,35 +60,42 @@ namespace blog.backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(AuthorLoginDTO request)
         {
-            // Verifica se o email e a senha correspondem a um autor existente
-            var author = await _context.Authors.FirstOrDefaultAsync(u => u.Email == request.Email);
-
-            if (author == null || !VerifyPassword(request.Password, author.Password))
-                return Unauthorized();
-
-            // Cria um token JWT que pode ser usado para autenticar solicitações subsequentes do usuário
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_config["Jwt:SecretKey"]);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            try
             {
-                Subject = new ClaimsIdentity(new Claim[]
+                var author = await _context.Authors.FirstOrDefaultAsync(u => u.Email == request.Email);
+
+                if (author == null || !VerifyPassword(request.Password, author.Password))
+                    return Unauthorized();
+
+                // Cria um token JWT
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_config["Jwt:SecretKey"]);
+                var tokenDescriptor = new SecurityTokenDescriptor
                 {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
                     new Claim(ClaimTypes.Name, author.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                Issuer = _config["Jwt:Issuer"],
-                Audience = _config["Jwt:Audience"],
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+                    }),
+                    Expires = DateTime.UtcNow.AddDays(7),
+                    Issuer = _config["Jwt:Issuer"],
+                    Audience = _config["Jwt:Audience"],
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new
+                return Ok(new
+                {
+                    Id = author.Id,
+                    Name = author.Name,
+                    Email = author.Email,
+                    Token = tokenHandler.WriteToken(token)
+                });
+            }
+            catch (System.Exception ex)
             {
-                Id = author.Id,
-                Name = author.Name,
-                Email = author.Email,
-                Token = tokenHandler.WriteToken(token)
-            });
+                throw ex;
+            }
+
         }
 
         private string HashPassword(string password)
