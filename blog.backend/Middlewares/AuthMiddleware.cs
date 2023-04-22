@@ -51,7 +51,7 @@ namespace blog.backend.Middlewares
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
+                var key = Encoding.ASCII.GetBytes(_configuration["Jwt:SecretKey"]);
                 var validationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
