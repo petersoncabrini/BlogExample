@@ -11,8 +11,19 @@
                         *ngIf="innerWidth > 600">Write</span> </a></li>
             <li> <a (click)="toggleSearch()"><i class="bi bi-search mx-1"></i> <span
                         *ngIf="innerWidth > 600">Search</span></a> </li>
+            <!-- <div *ngIf="showSearch">
+                <input class="mx-0" key type="text" placeholder="Search..." [(ngModel)]="filter.search">
+            </div> -->
             <div *ngIf="showSearch">
-                <input class="mx-0" key type="text" placeholder="Search...">
+                <input class="mt-2" type="text" placeholder="Search for a post" matInput [matAutocomplete]="auto"
+                    (keydown.enter)="findPosts()" [(ngModel)]="filter.search">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of searchResults" [value]="option">
+                        <img class="me-1" style="width: 30px;" src="{{option.image == null ? '../../../assets/image-placeholder.png' : 'data:image/png;base64, ' +
+                        option.image}}" alt="">
+                        {{option.title}}
+                    </mat-option>
+                </mat-autocomplete>
             </div>
         </ul>
     </div>

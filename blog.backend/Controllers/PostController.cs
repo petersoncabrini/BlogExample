@@ -1,4 +1,5 @@
 using blog.backend.Context;
+using blog.backend.DTOs.Generic;
 using blog.backend.DTOs.Post;
 using blog.backend.models;
 using Microsoft.AspNetCore.Authorization;
@@ -110,9 +111,21 @@ namespace blog.backend.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
+        [HttpPost("search")]
+        public async Task<ActionResult<List<PostDTO>>> Search(Filter filter)
+        {
+            var posts = await _context.Posts
+                            .Include(x => x.Author)
+                            .Where(x => x.Title.Contains(filter.Search) || x.Author.Name.Contains(filter.Search))
+                            .Select(x => new PostDTO(x)).ToListAsync();
 
+            if (posts == null)
+                return NotFound();
+
+            return posts;
+        }
     }
-
 }
 
 

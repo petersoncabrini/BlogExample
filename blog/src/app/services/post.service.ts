@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/Post/Post';
+import { Filter } from '../models/Generic/filter';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,10 @@ export class PostService {
 
   delete(id: string) {
     return this.http.delete<any>(this.apiUrl + 'delete/' + id);
+  }
 
+  find(request: Filter) {
+    return this.http.post<any>(this.apiUrl + 'search', request);
   }
 
 }
