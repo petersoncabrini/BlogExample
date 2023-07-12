@@ -20,14 +20,6 @@ Este é um projeto de blog desenvolvido em Angular, ASP.NET Core Web API utiliza
 ### Swagger - Endpoints da API
 <img width="1100" alt="Captura de Tela 2023-04-22 às 10 22 05" src="https://user-images.githubusercontent.com/82073973/233789283-80dc8b78-a5b3-43df-8616-1e4536ce29fd.png">
 
-
-### Home do Blog - Desktop
-<img width="1677" alt="Captura de Tela 2023-04-22 às 10 40 05" src="https://user-images.githubusercontent.com/82073973/233789304-791652d8-3e55-4fdb-a387-a2f79efd131e.png">
-
-### Home do Blog - Mobile
-<img width="368" alt="Captura de Tela 2023-04-22 às 10 41 07" src="https://user-images.githubusercontent.com/82073973/233789331-49beeb3c-4b3e-4962-b916-f1a9d1b57b18.png">
-
-
 ## Como executar o projeto
 
 1) Clone o repositório para sua máquina local.
